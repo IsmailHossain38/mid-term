@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content  %}
+  
+<div class='p-3 m-auto' >
+    <a href="{% url 'edit_view' %}" class="btn btn-danger ">Edit Profile</a>
+</div>
+
+
+
+<h2 class="mt-4">Purchased Cars</h2>
+<div class="d-flex flex-wrap justify-content-center pt-3 px-5">
+  {% for purchased_car in data %}
+    <div class="col-sm-3 ">
+      <div class="card mx-3">
+        <img src="{{ purchased_car.image_field.url }}" class="card-img-top" alt="car-image">
+        <div class="card-body">
+          <h5 class="card-title">Car Name: {{ purchased_car.car_name }}</h5>
+          <h5 class="card-text">Price: {{ purchased_car.price }}</h5>
+          <small><b>Car Brand Name: {{ purchased_car.brand.name }}</b></small>
+          <br>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
